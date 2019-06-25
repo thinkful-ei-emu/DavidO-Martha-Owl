@@ -56,15 +56,28 @@ export default function PeopleList(){
 console.log(participants);
 console.log('Line 56 Ran!')
 
-const PeopleList = participants.map((participant) => (
-    <WeirdPeople key=  {participant.id} name= {participant.name}/> 
-));
+if (participants.onStage === true){
+   return "On Stage"
+};
 
-console.log(PeopleList)
+const peopleList = participants.map((participant) => (
+    <div>
+    <img src = {participant.avatar} />
+    <li> {participant.name}  </li>
+    <p> {participant.onStage ? 'On Stage' : null}  </p>
+    </div>
+    // <participants key=  {participant.id} name= {participant.name}/> 
+)
+
+);
+
+console.log(peopleList)
 
 return(
     <div className = "ListofPeople">
-        {PeopleList}
+        <ul>
+        {peopleList}
+        </ul>
     </div>
 )
 
