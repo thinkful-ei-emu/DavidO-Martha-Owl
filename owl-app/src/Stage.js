@@ -1,17 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-
-//Participants List
-
-//This file contains a ist of people. There will be ID, name, and avatar properties. 
-
-//We will then render it to the screen.
-
-
-//Function that gets list name and renders it to the screen
-
-export default function PeopleList(){
-    const participants = [
+export default function Stage (){
+  const participants = [
     {
         id: 1,
         name: 'Koren Templeton',
@@ -51,23 +41,24 @@ export default function PeopleList(){
         inSession: true,
         onStage: true
     }
-]
+];
 
-const peopleList = participants.map((participant) => (
-    <div>
-    <img src = {participant.avatar} alt="peoples faces" />
-    <li> {participant.name}  </li>
-    <p> {participant.onStage ? 'On Stage' : null}  </p>
-    </div>
-    // <participants key=  {participant.id} name= {participant.name}/> 
-    )
-);
 
-return(
-    <div className = "ListofPeople">
-        <ul>
-        {peopleList}
-        </ul>
-    </div>
-    )
-};
+const presenting = participants.filter(participant => participant.onStage === true );
+
+const people = presenting.map((participant) => (
+  <div>
+    {participant.name}
+   <img src = {participant.avatar} alt="peoples faces" />
+</div>)
+)
+
+return (
+ <div>
+   <section>
+     {people}
+   </section>
+ </div> 
+)
+
+}
